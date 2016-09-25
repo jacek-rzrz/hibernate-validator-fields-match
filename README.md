@@ -18,6 +18,7 @@ public class User implements PasswordAndConfirmation, EmailAndConfirmation {
 
     private String confirmedEmail;
 
+    @Pattern(regexp="\\d{6,}")
     private String phoneNumber;
 
     private String confirmedPhoneNumber;
