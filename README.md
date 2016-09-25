@@ -5,7 +5,7 @@ Annotations for validating fields that must match.
 @Data
 @PasswordsMatch
 @EmailsMatch
-@FieldsMatch(fieldMap = PhoneNumberMap.class)
+@FieldsMatch(fields = PhoneNumberFields.class)
 public class User implements PasswordAndConfirmation, EmailAndConfirmation {
 
     @NotBlank
@@ -25,7 +25,7 @@ public class User implements PasswordAndConfirmation, EmailAndConfirmation {
 ```
 
 ```java
-public class PhoneNumberMap implements FieldMap<User> {
+public class PhoneNumberFields implements SelectFields<User> {
 
     @Override
     public Object field(User obj) {

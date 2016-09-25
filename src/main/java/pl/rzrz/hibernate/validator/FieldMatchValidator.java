@@ -6,12 +6,12 @@ import java.util.Objects;
 
 public class FieldMatchValidator implements ConstraintValidator<FieldsMatch, Object> {
 
-    private FieldMap fieldMap;
+    private SelectFields selectFields;
 
     @Override
     public void initialize(FieldsMatch constraintAnnotation) {
         try {
-            this.fieldMap = constraintAnnotation.fieldMap().newInstance();
+            this.selectFields = constraintAnnotation.fields().newInstance();
         } catch (InstantiationException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
@@ -20,8 +20,8 @@ public class FieldMatchValidator implements ConstraintValidator<FieldsMatch, Obj
     @Override
     @SuppressWarnings("unchecked")
     public boolean isValid(Object obj, ConstraintValidatorContext context) {
-        Object field = fieldMap.field(obj);
-        Object confirmedField = fieldMap.confirmedField(obj);
+        Object field = selectFields.field(obj);
+        Object confirmedField = selectFields.confirmedField(obj);
         if(Objects.equals(field, confirmedField)) {
             return true;
         }
@@ -29,7 +29,7 @@ public class FieldMatchValidator implements ConstraintValidator<FieldsMatch, Obj
         context.disableDefaultConstraintViolation();
 
         context.buildConstraintViolationWithTemplate(context.getDefaultConstraintMessageTemplate())
-                .addPropertyNode(fieldMap.getConfirmationFieldName())
+                .addPropertyNode(selectFields.getConfirmationFieldName())
                 .addConstraintViolation();
 
         return false;

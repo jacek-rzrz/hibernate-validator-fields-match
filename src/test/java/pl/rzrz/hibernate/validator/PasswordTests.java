@@ -33,6 +33,6 @@ public class PasswordTests {
 
     @Test
     public void passwordFieldMap_returnsCorrectConfirmationFieldName() {
-        assertEquals("confirmedPassword", new Password.PasswordFieldMap().getConfirmationFieldName());
+        assertEquals("confirmedPassword", new Password.PasswordFields().getConfirmationFieldName());
     }
 }

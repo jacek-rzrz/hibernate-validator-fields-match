@@ -3,7 +3,7 @@ package pl.rzrz.hibernate.validator;
 import lombok.Data;
 import org.junit.Test;
 import pl.rzrz.hibernate.validator.Email.EmailAndConfirmation;
-import pl.rzrz.hibernate.validator.Email.EmailFieldMap;
+import pl.rzrz.hibernate.validator.Email.EmailFields;
 import pl.rzrz.hibernate.validator.Email.EmailsMatch;
 
 import javax.validation.ConstraintViolation;
@@ -37,6 +37,6 @@ public class EmailTests {
 
     @Test
     public void emailFieldMap_returnsCorrectConfirmationFieldName() {
-        assertEquals("confirmedEmail", new EmailFieldMap().getConfirmationFieldName());
+        assertEquals("confirmedEmail", new EmailFields().getConfirmationFieldName());
     }
 }

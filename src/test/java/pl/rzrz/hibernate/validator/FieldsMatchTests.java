@@ -19,7 +19,7 @@ import static pl.rzrz.hibernate.validator.Utils.validate;
 public class FieldsMatchTests {
 
     @Data
-    @FieldsMatch(fieldMap = MyBeanFieldMap.class)
+    @FieldsMatch(fields = MyBeanFields.class)
     @Ignore
     public static class MyBean {
         private final String field1;
@@ -27,7 +27,7 @@ public class FieldsMatchTests {
     }
 
     @Ignore
-    public static class MyBeanFieldMap implements FieldMap<MyBean> {
+    public static class MyBeanFields implements SelectFields<MyBean> {
 
         @Override
         public Object field(MyBean obj) {

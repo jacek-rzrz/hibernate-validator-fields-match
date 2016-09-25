@@ -21,5 +21,5 @@ public @interface FieldsMatch {
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 
-    Class<? extends FieldMap<? extends Object>> fieldMap();
+    Class<? extends SelectFields<? extends Object>> fields();
 }

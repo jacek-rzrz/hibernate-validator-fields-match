@@ -10,13 +10,14 @@ import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 public class Password {
+
     public interface PasswordAndConfirmation {
         String getPassword();
 
         String getConfirmedPassword();
     }
 
-    public static class PasswordFieldMap implements FieldMap<PasswordAndConfirmation> {
+    public static class PasswordFields implements SelectFields<PasswordAndConfirmation> {
 
         @Override
         public Object field(PasswordAndConfirmation obj) {
@@ -38,7 +39,7 @@ public class Password {
     @Target({ TYPE })
     @Retention(RUNTIME)
     @Constraint(validatedBy = { })
-    @FieldsMatch(fieldMap = PasswordFieldMap.class)
+    @FieldsMatch(fields = PasswordFields.class)
     public @interface PasswordsMatch {
 
         String message() default "Passwords must match";

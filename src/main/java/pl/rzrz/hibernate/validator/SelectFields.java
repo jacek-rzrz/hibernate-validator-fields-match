@@ -1,6 +1,6 @@
 package pl.rzrz.hibernate.validator;
 
-public interface FieldMap<T> {
+public interface SelectFields<T> {
 
     Object field(T obj);
 

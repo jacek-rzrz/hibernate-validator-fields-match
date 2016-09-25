@@ -18,7 +18,7 @@ public class Email {
         String getConfirmedEmail();
     }
 
-    public static class EmailFieldMap implements FieldMap<EmailAndConfirmation> {
+    public static class EmailFields implements SelectFields<EmailAndConfirmation> {
 
         @Override
         public Object field(EmailAndConfirmation obj) {
@@ -40,7 +40,7 @@ public class Email {
     @Target({ TYPE })
     @Retention(RUNTIME)
     @Constraint(validatedBy = { })
-    @FieldsMatch(fieldMap = EmailFieldMap.class)
+    @FieldsMatch(fields = EmailFields.class)
     public @interface EmailsMatch {
         String message() default "Passwords must match";
         Class<?>[] groups() default {};
