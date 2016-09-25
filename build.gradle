@@ -1,0 +1,23 @@
+group 'pl.rzrz'
+version '1.0.0-SNAPSHOT'
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.13'
+  distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.hibernate', name: 'hibernate-validator', version: '5.2.4.Final'
+    compile "org.projectlombok:lombok:1.16.10"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testRuntime group: 'javax.el', name: 'javax.el-api', version: '2.2.4'
+    testRuntime group: 'org.glassfish.web', name: 'javax.el', version: '2.2.4'
+}
